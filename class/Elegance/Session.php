@@ -67,13 +67,11 @@ abstract class Session
     /** Recria a sessão atual */
     static function reload()
     {
-        if (session_status() == PHP_SESSION_ACTIVE) {
-            $SESSION_ID = Code::on(session_id() . '__' . uniqid());
-            session_destroy();
-            session_id(Cif::on($SESSION_ID));
-            session_start();
-            static::set('___SESSION___', $SESSION_ID);
-        }
+        $SESSION_ID = Code::on(session_id() . '__' . uniqid());
+        session_destroy();
+        session_id(Cif::on($SESSION_ID));
+        session_start();
+        static::set('___SESSION___', $SESSION_ID);
     }
 }
 
