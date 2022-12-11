@@ -55,9 +55,9 @@ abstract class Session
 
             if (
                 $reload ||
-                !Cif::check(session_id()) ||
+                !Code::check(session_id()) ||
                 !static::check('___SESSION___') ||
-                !Cif::compare(static::get('___SESSION___'), session_id())
+                !Code::compare(static::get('___SESSION___'), session_id())
             ) {
                 static::reload();
             }
@@ -69,7 +69,7 @@ abstract class Session
     {
         $SESSION_ID = Code::on(session_id() . '__' . uniqid());
         session_destroy();
-        session_id(Cif::on($SESSION_ID));
+        session_id(Code::on($SESSION_ID));
         session_start();
         static::set('___SESSION___', $SESSION_ID);
     }
