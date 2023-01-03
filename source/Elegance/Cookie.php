@@ -16,7 +16,7 @@ abstract class Cookie extends Session
         $secureCookie = substr($name, 0, 1) == '#';
 
         if ($secureCookie)
-            $name = Code::on("COOKIE_CODE_${name}");
+            $name = Code::on("COOKIE_CODE_$name");
 
         if (!isset(self::$cookies[$name]))
             self::$cookies[$name] = self::getPHPCookie($name);
@@ -35,7 +35,7 @@ abstract class Cookie extends Session
         $secureCookie = substr($name, 0, 1) == '#';
 
         if ($secureCookie)
-            $name = Code::on("COOKIE_CODE_${name}");
+            $name = Code::on("COOKIE_CODE_$name");
 
         if (!is_null($value)) {
             if ($secureCookie)
